@@ -26,5 +26,12 @@ fielddeets = summariseRecs(recs, hints=hints)
 # Write the summary
 print([deets['spec'] for fldkey, deets, in fielddeets.items()])
 
+Dataset:
+```
+{"name": "Roy", timestamp: 1476264315}
+{"name": "Pris", timestamp: 1455451200}  
 ```
 
+Output:
+```
+```

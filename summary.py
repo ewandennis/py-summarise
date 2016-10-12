@@ -17,6 +17,12 @@ class IntSummary:
   def __repr__(self):
     return '%s\n\t(%d, %d)' % (self.fldspec['fldname'], self.fldspec['lo'], self.fldspec['hi'])
 
+class TimestampSummary(IntSummary):
+  def __repr__(self):
+    lo = datetime.fromtimestamp(self.fldspec['lo'])
+    hi = datetime.fromtimestamp(self.fldspec['hi'])
+    return '%s\n\t%s -> %s\n' % (self.fldspec['fldname'], lo, hi)
+
 class StrSummary(object):
   def __init__(self, fldspec, top=10):
     self.fldspec = fldspec
@@ -44,12 +50,6 @@ class NullSummary(object):
     pass
   def __repr__(self):
     return self.fldspec['fldname']
-
-class TimestampSummary(IntSummary):
-  def __repr__(self):
-    lo = datetime.fromtimestamp(self.fldspec['lo'])
-    hi = datetime.fromtimestamp(self.fldspec['hi'])
-    return '%s\n\t%s -> %s\n' % (self.fldspec['fldname'], lo, hi)
 
 def summariseRecs(recs, hints=None):
   summaries = {
